@@ -1,21 +1,19 @@
-$( document ).ready(function() {
-  // Handler for .ready() called.
+$(document).ready(function () {
 
-  console.log('jQuery loaded successfully!');
-  
+  console.log('jQuery loaded successfully!')
+
   // Create a game board (three arrays inside a single array)
   var board = [
-    ['','',''],
-    ['','',''],
-    ['','','']
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
   ]
 
+  // Track turns
   var turn = 0
-
 
   // Add event listeners to each box
   $('.box').on('click', handleClick)
-
 
   // Handle each box click
   function handleClick(evt) {
@@ -41,19 +39,19 @@ $( document ).ready(function() {
       // If there's a winner turn off event listeners and display alert (with timeout)
       if (winner === 'x') {
         $('.box').off('click')
-        setTimeout(function() {
+        setTimeout(function () {
           alert('X won!')
         }, 100)
       } else if (winner === 'o') {
         $('.box').off('click')
-        setTimeout(function() {
+        setTimeout(function () {
           alert('O won!')
         }, 100)
       }
 
       // Check if the board is full
-      let total = 0;
-      board.flat().forEach(function(box) {
+      let total = 0
+      board.flat().forEach(function (box) {
         if (box === 'x' || box === 'o') {
           total++
         }
@@ -61,7 +59,7 @@ $( document ).ready(function() {
 
       // If the board is full and we have ni winner then annouce a tie
       if (total == 9 && winner === false) {
-        setTimeout(function() {
+        setTimeout(function () {
           alert('It\'s a tie!')
         }, 100)
       }
@@ -81,7 +79,7 @@ $( document ).ready(function() {
     let OFRCheck = checkObliqueFromRight(board)
     var allChecks = [hCheck, vCheck, OFLCheck, OFRCheck]
     for (var i = 0; i < allChecks.length; i++) {
-      if  (allChecks[i] === 'x') {
+      if (allChecks[i] === 'x') {
         return 'x'
       } else if (allChecks[i] == 'o') {
         return 'o'
@@ -109,7 +107,7 @@ $( document ).ready(function() {
     }
     return checkCount(countX, countO)
   }
-  
+
   // Check for a winner ('x' or 'o') diagonally (from the left)
   function checkObliqueFromLeft(board) {
     var countX = 0
@@ -122,7 +120,7 @@ $( document ).ready(function() {
         countO++
       }
     }
-    
+
     return checkCount(countX, countO)
   }
 
@@ -130,7 +128,7 @@ $( document ).ready(function() {
   function checkObliqueFromRight(board) {
     var countX = 0
     var countO = 0
-    var j = 0;
+    var j = 0
     for (var i = 2; i >= 0; i--) {
       if (board[j][i] === 'x') {
         countX++
@@ -144,10 +142,10 @@ $( document ).ready(function() {
 
   // Check for a winner ('x' or 'o') vertically
   function checkVertical(board) {
-    for(var i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
       var countX = 0
       var countO = 0
-      for( var j = 0; j < 3; j++) {
+      for (var j = 0; j < 3; j++) {
         if (board[j][i] === 'x') {
           countX++
         } else if (board[j][i] === 'o') {
