@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     // If more than three turns, check for winners
     if (turn >= 3) {
-      let winner = checkForWinner(board)
+      var winner = checkForWinner(board)
 
       // If there's a winner turn off event listeners and display alert (with timeout)
       if (winner === 'x') {
@@ -50,7 +50,7 @@ $(document).ready(function () {
       }
 
       // Check if the board is full
-      let total = 0
+      var total = 0
       board.flat().forEach(function (box) {
         if (box === 'x' || box === 'o') {
           total++
@@ -73,10 +73,10 @@ $(document).ready(function () {
 
   // Leverages all check functions to check for a winner
   function checkForWinner(board) {
-    let hCheck = checkHorizontal(board)
-    let vCheck = checkVertical(board)
-    let OFLCheck = checkObliqueFromLeft(board)
-    let OFRCheck = checkObliqueFromRight(board)
+    var hCheck = checkHorizontal(board)
+    var vCheck = checkVertical(board)
+    var OFLCheck = checkObliqueFromLeft(board)
+    var OFRCheck = checkObliqueFromRight(board)
     var allChecks = [hCheck, vCheck, OFLCheck, OFRCheck]
     for (var i = 0; i < allChecks.length; i++) {
       if (allChecks[i] === 'x') {
