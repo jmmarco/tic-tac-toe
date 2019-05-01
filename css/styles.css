@@ -32,15 +32,11 @@ body {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  padding-top: 60px;
 }
 
-.counter {
-  font-size: 10rem;
-  color: lightseagreen;
+.form-row {
+  margin-bottom: 20px;
 }
 
 

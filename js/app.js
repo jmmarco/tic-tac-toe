@@ -1,56 +1,71 @@
 $(document).ready(function () {
 
-  console.log('hola')
+  $inputName = $('#input-name')
+  $inputEmail = $('#input-email')
+  $inputComments = $('#input-comments')
+  $myForm = $('form');
 
-  var counter = 0
-
-  $('.counter').text(counter)
-
-
-  $(document).on('keydown', handleKeyCodesAlaAntigua)
+  $inputName.on('input', handleName)
+  $inputEmail.on('input', handleEmail)
+  $inputComments.on('input', handleName)
 
 
-  function handleKeyCodes(evt) {
-    switch(evt.code) {
-      case 'ArrowUp':
-        counter++
-        $('.counter').text(counter)
-        break
-      case 'ArrowDown':
-        counter--
-        $('.counter').text(counter)
-        break
-      case 'Enter':
-        counter = 0
-        $('.counter').text(counter)
-      default:
-        console.log('nada')
+  function handleName(evt) {
+    var name = evt.target.value
+    var $target = $(evt.target)
+
+    if (name.length > 3) {
+      $target.removeClass('is-invalid').addClass('is-valid')
+    } else {
+      $target.removeClass('is-valid').addClass('is-invalid')
     }
+    enableSubmit(3)
+  }
+
+  function handleEmail(evt) {
+    var $target = $(evt.target)
+    
+    if (emailIsValid(evt.target.value)) {
+      var $target = $(evt.target)
+      $target.removeClass('is-invalid').addClass('is-valid')
+    } else {
+      console.log('NOT VALID')
+      $target.removeClass('is-valid').addClass('is-invalid')
+    }
+
+    enableSubmit(3)
+  }
+
+  function emailIsValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
+  function enableSubmit(numEleToCheck) {
+
+    var validElements = 0
+   
+    $('form').find(':input').each(function(e) {
+      $(this).hasClass('is-valid') && validElements++
+    })
+          
+    if (validElements == numEleToCheck) {
+      $('form').find('button').attr('disabled', false)
+      console.log('valid', validElements)
+    } else {
+      console.log('not enough', validElements)
+      $('form').find('button').attr('disabled', true)
+    }
+
+
+    
   }
 
 
-  function handleKeyCodesAlaAntigua(evt) {
-    console.log(evt.which)
-    console.log(typeof evt.which)
-    switch(evt.which) {
-      case 13:
-        counter = 0
-        $('.counter').text(counter)
-        break
-      case 38:
-        counter++
-        $('.counter').text(counter)
-        break
-      case 40:
-        counter--
-        $('.counter').text(counter)
-        break
-      default:
-        console.log('nada')
-    }
-  }
 
-  
+
+
+
+
 
 
 
