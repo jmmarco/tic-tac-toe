@@ -53,7 +53,7 @@ $(document).ready(function () {
         }
       });
 
-      // If the board is full and we have ni winner then annouce a tie
+      // If the board is full and we have no winner then annouce a tie
       if (total == 9 && winner === false) {
         setTimeout(function () {
           alert("It's a tie!");
@@ -86,7 +86,8 @@ $(document).ready(function () {
 
   // Check for a winner ('x' or 'o') horizontally
   function checkHorizontal(board) {
-    let countX = 0, countO = 0;
+    let countX = 0,
+      countO = 0;
     for (let i = 0; i < 3; i++) {
       countX = 0;
       countO = 0;
