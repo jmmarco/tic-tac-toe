@@ -1,3 +1,6 @@
-# Ignore build folder
+# Build output and node_modules
 dist
 node_modules
+
+# Parcel cache
+.parcel-cache
