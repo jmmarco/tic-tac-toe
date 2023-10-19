@@ -12,4 +12,4 @@ The game is played on a 3x3 grid. Players take turns to mark a cell with their s
 
 ## License
 
-This project is licensed under the MIT license. See the [`LICENSE`](LICENSE.md) file for details.
+This project is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for details.
